@@ -3,7 +3,7 @@
 SpellBook = angular.module('spellbookApp')
 
 SpellBook.constant 'Domains', () -> {}
-SpellBook.constant 'Classes', () ->
+SpellBook.constant 'Classes',
   [
     'cleric'
     'druid'
@@ -22,6 +22,7 @@ SpellBook.constant 'Classes', () ->
   ]
 
 SpellBook.controller 'MainCtrl', ($scope, $http, Classes, Domains, Spells) ->
+  console.log Classes
   $scope.classes = Classes
   $scope.spells = Spells
   $scope.nameFilter = ''
