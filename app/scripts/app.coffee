@@ -4,7 +4,8 @@ angular.module('spellbookApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.bootstrap'
 ])
   .config ($routeProvider, $locationProvider) ->
     $routeProvider
