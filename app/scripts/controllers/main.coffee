@@ -1,10 +1,10 @@
 'use strict'
 
-angular.module('spellbookApp').controller 'MainCtrl', ($scope, $http) ->
-  $http.get('/api/spells').success (response) ->
-    $scope.spells = response
-  $scope.nameFilter = ''
-  $scope.classes = [
+SpellBook = angular.module('spellbookApp')
+
+SpellBook.constant 'Domains', () -> {}
+SpellBook.constant 'Classes', () ->
+  [
     'cleric'
     'druid'
     'ranger'
@@ -20,6 +20,11 @@ angular.module('spellbookApp').controller 'MainCtrl', ($scope, $http) ->
     'sorcerer'
     'wizard'
   ]
+
+SpellBook.controller 'MainCtrl', ($scope, $http, Classes, Domains, Spells) ->
+  $scope.classes = Classes
+  $scope.spells = Spells
+  $scope.nameFilter = ''
   $scope.classFilter = {}
 
 
