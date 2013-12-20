@@ -89,3 +89,21 @@ body {
         border-bottom: 0;
     }
 }
+
+.source-badge {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    padding:3px;
+    border: 1px solid $panel-default-border;
+    border-top-left-radius: $panel-border-radius;
+    border-bottom: 0px;
+    border-right: 0px;
+}
+.spell-block-container {
+    @include make-md-column(4, 5px);
+}
+.spell-block {
+    position:relative;
+    min-height: 200px;
+}
