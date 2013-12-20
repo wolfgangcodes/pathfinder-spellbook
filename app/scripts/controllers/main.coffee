@@ -1,9 +1,10 @@
 'use strict'
 
-SpellBook = angular.module('spellbookApp')
+SpellBook = angular.module('spellbook.app')
 
-SpellBook.constant 'Domains', () -> {}
-SpellBook.constant 'Classes',
+SpellBookConstants = angular.module('spellbook.constants', [])
+SpellBookConstants.constant 'Domains', () -> {}
+SpellBookConstants.constant 'Classes',
   [
     'cleric'
     'druid'
@@ -20,6 +21,14 @@ SpellBook.constant 'Classes',
     'sorcerer'
     'wizard'
   ]
+
+filters = angular.module('spellbook.filters', ['spellbook.constants'])
+
+filters.filter 'classFilter', ->
+  (data, selected) ->
+    console.log data, selected
+    data
+
 
 SpellBook.controller 'MainCtrl', ($scope, $http, Classes, Domains, Spells) ->
   console.log Classes

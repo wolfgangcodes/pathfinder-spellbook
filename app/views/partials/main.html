@@ -15,12 +15,12 @@
   </div>
   <div class="panel-body">
     <div ng-repeat="class in classes">
-      <label class="checkbox-inline col-xs-2"><input type="checkbox" ng-model="selectedClasses:[class]"/>{{class}}</label>
+      <label class="checkbox-inline col-xs-2"><input type="checkbox" ng-model="selectedClasses[class]"/>{{class}}</label>
     </div>
   </div>
 </div>
 <div class="row" >
-  <div class="panel panel-default" ng-repeat="spell in spells | filter:{name:nameFilter} | classFilter:selectedClasses">
+  <div class="panel panel-default" ng-repeat="spell in spells | filter:{name:nameFilter} | classFilter:selectedClasses ">
       <div class="panel-heading">
         <h4 class="panel-title">{{spell.name}} <span class="text-muted pull-right">{{spell.source}}</span></h4>
       </div>

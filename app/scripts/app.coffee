@@ -1,18 +1,14 @@
 'use strict'
 
-SpellBook = angular.module('spellbookApp', [
+angular.module('spellbook.app', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
-])
-
-SpellBook.filter 'classFilter', (data, selected) ->
-  console.log _
-  data
-
-SpellBook.config ($routeProvider, $locationProvider) ->
+  'ui.bootstrap',
+  'spellbook.constants',
+  'spellbook.filters'
+]).config ($routeProvider, $locationProvider) ->
   $routeProvider
     .when '/',
       templateUrl: 'partials/main'
