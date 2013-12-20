@@ -8,6 +8,10 @@ SpellBook = angular.module('spellbookApp', [
   'ui.bootstrap'
 ])
 
+SpellBook.filter 'classFilter', (data, selected) ->
+  console.log _
+  data
+
 SpellBook.config ($routeProvider, $locationProvider) ->
   $routeProvider
     .when '/',

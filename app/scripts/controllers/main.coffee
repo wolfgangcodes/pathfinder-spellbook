@@ -26,7 +26,7 @@ SpellBook.controller 'MainCtrl', ($scope, $http, Classes, Domains, Spells) ->
   $scope.classes = Classes
   $scope.spells = Spells
   $scope.nameFilter = ''
-  $scope.classFilter = {}
+  $scope.selectedClasses = {}
 
 
 
