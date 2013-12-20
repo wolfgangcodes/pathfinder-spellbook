@@ -3,7 +3,8 @@
 SpellBook = angular.module('spellbook.app')
 
 SpellBookConstants = angular.module('spellbook.constants', [])
-SpellBookConstants.constant 'Domains', () -> {}
+SpellBookConstants.constant 'Domains', []
+#TODO: We should maintain one list of classes client and server
 SpellBookConstants.constant 'Classes',
   [
     'cleric'
@@ -26,12 +27,15 @@ filters = angular.module('spellbook.filters', ['spellbook.constants'])
 
 filters.filter 'classFilter', ->
   (data, selected) ->
-    console.log data, selected
-    data
-
+    if _.isEmpty(_.filter selected, (val) -> val)
+      data
+    else
+      _.filter data, (spell) ->
+        things = _.filter spell.classes, (spellLevel, className) ->
+          spellLevel and selected[className] is not null
+        things.length
 
 SpellBook.controller 'MainCtrl', ($scope, $http, Classes, Domains, Spells) ->
-  console.log Classes
   $scope.classes = Classes
   $scope.spells = Spells
   $scope.nameFilter = ''

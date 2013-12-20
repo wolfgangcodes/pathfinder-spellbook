@@ -15,10 +15,8 @@ angular.module('spellbook.app', [
       controller: 'MainCtrl'
       resolve:
         Spells: ($http, $q) ->
-          #TODO: This should be in a Spells Service
           deferred = $q.defer()
-          $http.get('/api/spells').success (response) ->
-            deferred.resolve response
+          $http.get('/api/spells').success (response) -> deferred.resolve response
           deferred.promise
     .otherwise
       redirectTo: '/'
