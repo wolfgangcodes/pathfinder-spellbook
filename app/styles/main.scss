@@ -89,7 +89,12 @@ body {
         border-bottom: 0;
     }
 }
-
+.selected-badge {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    color: darken($brand-success, 20%);
+}
 .source-badge {
     position: absolute;
     bottom: -1px;
@@ -103,7 +108,30 @@ body {
 .spell-block-container {
     @include make-md-column(4, 5px);
 }
+
+$spell-block-height: 200px;
+$spell-block-duration: 0.4s;
 .spell-block {
     position:relative;
-    min-height: 200px;
+    min-height: $spell-block-height;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  -webkit-transition:all linear $spell-block-duration;
+  transition:all linear $spell-block-duration;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:.30;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:$spell-block-height;
 }
