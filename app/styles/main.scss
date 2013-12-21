@@ -70,7 +70,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 730px;
+        max-width: 1020px;
     }
 
     /* Remove the padding we set earlier */
@@ -91,31 +91,51 @@ body {
 }
 .selected-badge {
     position: absolute;
-    top: -5px;
-    left: -5px;
+    top: -0.25em;
+    left: -0.25em;
     color: darken($brand-success, 20%);
+    font-size: 1.45em;
 }
 .source-badge {
     position: absolute;
-    bottom: -1px;
-    right: -1px;
+    bottom: 0px;
+    right: 0px;
     padding:3px;
     border: 1px solid $panel-default-border;
     border-top-left-radius: $panel-border-radius;
+    border-bottom-right-radius: $panel-border-radius;
     border-bottom: 0px;
     border-right: 0px;
+    background-color: lighten($panel-default-border, 30%);
 }
 .spell-block-container {
-    @include make-md-column(4, 5px);
+    @include make-md-column(3, 7px);
 }
 
 $spell-block-height: 200px;
 $spell-block-duration: 0.4s;
 .spell-block {
     position:relative;
-    min-height: $spell-block-height;
+    height: $spell-block-height;
+    .panel-body {
+        padding: 8px;
+    }
+    .panel {
+        margin-bottom: 8px;
+    }
 }
 
+.spell-select {
+    .nav-tabs {
+        margin-bottom: 10px;
+    }
+    .nav-tabs > li > a {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+}
+
+// Animation
 .animate-repeat.ng-move,
 .animate-repeat.ng-enter,
 .animate-repeat.ng-leave {

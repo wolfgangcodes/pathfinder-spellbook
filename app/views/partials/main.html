@@ -20,22 +20,22 @@
     <input class="form-control" type="text" ng-model="nameFilter" placeholder="Filter by spell name"/>
   </div>
 </div>
-<hr/>
-<div class="row">
-  <div
-      class="spell-block-container animate-repeat"
-      ng-click="spell.selected=!spell.selected"
-      ng-repeat="spell in spells | filter:{name:nameFilter} | classFilter:selectedClasses ">
-    <div class="panel panel-default spell-block ">
-        <div class="panel-heading">
-          <h6 class="small panel-title">{{spell.name}}</h6>
+<tabset class="row spell-select">
+  <tab ng-repeat="(level, spells) in spellsByLevel" heading="Level - {{level}}">
+    <div class="spell-block-container tab-content animate-repeat"
+        ng-click="spell.selected=!spell.selected"
+        ng-repeat="spell in spells | filter:{name:nameFilter} | classFilter:selectedClasses ">
+        <div class="panel panel-default spell-block ">
+            <div class="panel-heading">
+              <h6 class="small panel-title">{{spell.name}}</h6>
+            </div>
+            <div class="panel-body">{{spell.short_description}}</div>
+            <span class="small text-muted source-badge">{{spell.source}}</span>
+            <span ng-show="spell.selected" class="glyphicon glyphicon-ok-sign selected-badge"></span>
         </div>
-        <div class="panel-body">{{spell.short_description}}</div>
-        <span class="text-muted source-badge">{{spell.source}}</span>
-        <span ng-show="spell.selected" class="glyphicon glyphicon-ok-sign selected-badge"></span>
     </div>
-  </div>
-</div>
+  </tab>
+</tabset>
 
 <div class="footer">
   <p>♥ from the Yeoman team</p>

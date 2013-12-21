@@ -37,7 +37,7 @@ filters.filter 'classFilter', ->
 
 SpellBook.controller 'MainCtrl', ($scope, $http, Classes, Domains, Spells) ->
   $scope.classes = Classes
-  $scope.spells = Spells
+  $scope.spellsByLevel = _.groupBy Spells, (spell) -> _.min _.filter spell.classes, (c) -> c
   $scope.nameFilter = ''
   $scope.selectedClasses = {}
 
