@@ -109,7 +109,7 @@ body {
     background-color: lighten($panel-default-border, 30%);
 }
 .spell-block-container {
-    @include make-md-column(3, 7px);
+    @include make-md-column(3, 6px);
 }
 
 $spell-block-height: 200px;

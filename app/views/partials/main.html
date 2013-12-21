@@ -21,8 +21,11 @@
   </div>
 </div>
 <tabset class="row spell-select">
-  <tab ng-repeat="(level, spells) in spellsByLevel" heading="Level - {{level}}">
-    <div class="spell-block-container tab-content animate-repeat"
+  <button type="button" class="btn btn-default btn-sm pull-right" ng-click="clearSelected()">Clear Selected</button>
+  <tab ng-repeat="(level, spells) in spellsByLevel" heading="Level - {{level}}" ng-click="selectedLevel=level">
+    <div
+        ng-if="level==selectedLevel"
+        class="spell-block-container tab-content animate-repeat"
         ng-click="spell.selected=!spell.selected"
         ng-repeat="spell in spells | filter:{name:nameFilter} | classFilter:selectedClasses ">
         <div class="panel panel-default spell-block ">
