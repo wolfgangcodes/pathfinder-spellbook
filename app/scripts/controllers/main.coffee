@@ -23,6 +23,12 @@ SpellBookConstants.constant 'Classes',
     'wizard'
   ]
 
+# directive
+# float: right;
+# top: 0.65em;
+# position: absolute;
+# right: 5px;
+
 filters = angular.module('spellbook.filters', ['spellbook.constants'])
 
 filters.filter 'classFilter', ->
@@ -46,7 +52,11 @@ SpellBook.controller 'MainCtrl', ($scope, $http, Classes, Domains, Spells) ->
 
 
 
-
+# Clear in search
+# Deselect classes
+# Search by doamin
+# Filter by race
+# Class badges
 
 
 

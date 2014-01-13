@@ -1,33 +1,40 @@
-<div class="header">
+<div class="header navbar navbar-inverse navbar-fixed-top">
   <ul class="nav nav-pills pull-right">
     <li class="active"><a ng-href="#">Home</a></li>
     <li><a ng-href="#">About</a></li>
     <li><a ng-href="#">Contact</a></li>
   </ul>
-  <h3 class="text-muted">spellbook</h3>
+  <h3 class="text-muted">Pathfinder Spellbook Generator</h3>
 </div>
+<div class="container">
 <div class="row panel panel-default">
   <div class="panel-heading">
     <p class="panel-title">Filter your spells</p>
   </div>
   <div class="panel-body">
-    <!-- TODO: this should be another group in the panel? -->
     <div class="form-group clearfix">
       <div ng-repeat="class in classes">
         <label class="checkbox-inline col-xs-2" style="text-transform:capitalize"><input type="checkbox" ng-model="selectedClasses[class]"/>{{class}}</label>
       </div>
     </div>
-    <input class="form-control" type="text" ng-model="nameFilter" placeholder="Filter by spell name"/>
+    <div>
+      <input type="search" ng-model="searchVal" />
+      <input class="form-control" type="search" ng-model="nameFilter" placeholder="Filter by spell name"/>
+    </div>
   </div>
 </div>
-<tabset class="row spell-select">
+
+<tabset class="row spell-select" justified="true">
   <button type="button" class="btn btn-default btn-sm pull-right" ng-click="clearSelected()">Clear Selected</button>
-  <tab ng-repeat="(level, spells) in spellsByLevel" heading="Level - {{level}}" ng-click="selectedLevel=level">
+  <tab ng-repeat="(level, spells) in spellsByLevel" ng-click="selectedLevel=level">
+    <tab-heading>
+      <span>Level - {{level}}</span>
+    </tab-heading>
     <div
         ng-if="level==selectedLevel"
-        class="spell-block-container tab-content animate-repeat"
+        class="spell-block-container tab-content"
         ng-click="spell.selected=!spell.selected"
-        ng-repeat="spell in spells | filter:{name:nameFilter} | classFilter:selectedClasses ">
+        ng-repeat="spell in spells | filter:{name:nameFilter} | classFilter:selectedClasses">
         <div class="panel panel-default spell-block ">
             <div class="panel-heading">
               <h6 class="small panel-title">{{spell.name}}</h6>
@@ -40,6 +47,23 @@
   </tab>
 </tabset>
 
-<div class="footer">
+</div>
+
+
+
+<div class="selected-spell-list">
+  <div ng-repeat="(level, spells) in spellsByLevel">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Level - {{level}}<span class="badge pull-right">{{spells.length}}</span></div>
+      <!-- List group -->
+      <ul class="list-group" ng-repeat="spell in spells| filter:{selected:true}">
+        <li class="list-group-item"> {{spell.name}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer navbar navbar-inverse navbar-fixed-bottom">
   <p>♥ from the Yeoman team</p>
 </div>

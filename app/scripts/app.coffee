@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('spellbook.app', [
-  'ngAnimate',
+  # 'ngAnimate',
   'ngCookies',
   'ngResource',
   'ngSanitize',

@@ -2,6 +2,11 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
+* {
+    box-sizing: border-box;
+    position: relative;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -89,6 +94,14 @@ body {
         border-bottom: 0;
     }
 }
+
+/* ------------ SPELLBOOK ---------------- */
+$navbar-height-total: $navbar-height + $navbar-margin-bottom;
+body {
+    padding-top: $navbar-height-total;
+    padding-bottom: $navbar-height-total;
+}
+
 .selected-badge {
     position: absolute;
     top: -0.25em;
@@ -133,6 +146,17 @@ $spell-block-duration: 0.4s;
         padding-left: 11px;
         padding-right: 11px;
     }
+}
+
+.selected-spell-list {
+    position: fixed;
+    top: $navbar-height-total;
+    bottom: $navbar-height-total;
+    left: $padding-base-vertical;
+    overflow: auto;
+    width: 200px;
+
+    @small;
 }
 
 // Animation
