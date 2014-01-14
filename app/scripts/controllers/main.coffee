@@ -23,7 +23,12 @@ SpellBookConstants.constant 'Classes',
     'wizard'
   ]
 
-# directive
+# TODO:
+# directives
+#  Spell card
+#  Level badge Widget i.e.   "Sor/Wiz/Sum 2"
+# Filter in controller, inputs classes, search text, level
+# Move level tabs into filter box, display spells in box below.
 # float: right;
 # top: 0.65em;
 # position: absolute;
