@@ -34,6 +34,19 @@ SpellBookConstants.constant 'Classes',
 # position: absolute;
 # right: 5px;
 
+SpellBook.directive 'bindFilter', () ->
+  restrict: 'A'
+  scope:
+    value : '=bindFilter'
+    model : '@ngModel'
+  link: (scope, element) ->
+    scope.$watchCollection scope.value,
+    (oldval, newval, thing) ->
+      console.log scope.value, oldval, newval, thing
+  controller: ['$scope', '$filter', ($scope, $filter) ->
+    console.log $scope.value
+  ]
+
 filters = angular.module('spellbook.filters', ['spellbook.constants'])
 
 filters.filter 'classFilter', ->
@@ -59,8 +72,8 @@ SpellBook.controller 'MainCtrl', ($scope, $http, Classes, Domains, Spells) ->
 
 # Clear in search
 # Deselect classes
-# Search by doamin
-# Filter by race
+# Search by doamin/subschool
+# Filter by race??
 # Class badges
 
 

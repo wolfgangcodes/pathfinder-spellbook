@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('spellbook.app', [
+spellbook = angular.module 'spellbook.app', [
   # 'ngAnimate',
   'ngCookies',
   'ngResource',
@@ -9,10 +9,26 @@ angular.module('spellbook.app', [
   'ui.bootstrap',
   'spellbook.constants',
   'spellbook.filters'
-]).config ($routeProvider, $locationProvider) ->
+]
+
+spellbook.config ($routeProvider, $locationProvider) ->
   $routeProvider
     .when '/',
-      templateUrl: 'partials/main'
+      controller: 'NavCtrl'
+    .when '/print',
+      templateUrl: 'partials/print'
+      controller: 'PrintCtrl'
+    .when '/annotate',
+      templateUrl: 'partials/annotate'
+      controller: 'AnnotateCtrl'
+    .when '/manage',
+      templateUrl: 'partials/manage'
+      controller: 'ManageCtrl'
+    .when '/spells',
+      templateUrl: 'partials/spells'
+      controller: 'SpellsCtrl'
+    .when '/old',
+      templateUrl: 'partials/old'
       controller: 'MainCtrl'
       resolve:
         Spells: ($http, $q) ->
