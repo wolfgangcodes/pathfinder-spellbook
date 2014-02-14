@@ -13,8 +13,9 @@ spellbook = angular.module 'spellbook.app', [
 
 spellbook.config ($routeProvider, $locationProvider) ->
   $routeProvider
-    .when '/',
-      controller: 'NavCtrl'
+    # .when '/nav',
+    #   templateUrl: 'partials/nav'
+    #   controller: 'NavCtrl'
     .when '/print',
       templateUrl: 'partials/print'
       controller: 'PrintCtrl'
@@ -36,5 +37,5 @@ spellbook.config ($routeProvider, $locationProvider) ->
           $http.get('/api/spells').success (response) -> deferred.resolve response
           deferred.promise
     .otherwise
-      redirectTo: '/'
+      redirectTo: '/manage'
   $locationProvider.html5Mode(true)
