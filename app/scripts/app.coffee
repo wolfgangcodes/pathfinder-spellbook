@@ -8,6 +8,7 @@ spellbook = angular.module 'spellbook.app', [
   'ngRoute',
   'ui.bootstrap',
   'spellbook.constants',
+  'spellbook.services',
   'spellbook.filters'
 ]
 
