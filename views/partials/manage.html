@@ -1,3 +1,7 @@
-<div ng-controller="ManageCtrl">
-  Manage!
+<div>
+  <button>New Spellbook!</button>
+
+  <ul ng-repeat="spellbook in spellbooks">
+    <li><a href="#spells/{{spellbook.id}}">spellbook.name</a></li>
+  </ul>
 </div>

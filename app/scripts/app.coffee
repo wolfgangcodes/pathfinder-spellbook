@@ -1,7 +1,6 @@
 'use strict'
 
 spellbook = angular.module 'spellbook.app', [
-  # 'ngAnimate',
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -14,25 +13,23 @@ spellbook = angular.module 'spellbook.app', [
 
 spellbook.config ($routeProvider, $locationProvider) ->
   $routeProvider
-    # .when '/nav',
-    #   templateUrl: 'partials/nav'
-    #   controller: 'NavCtrl'
-    .when '/print',
-      templateUrl: 'partials/print'
-      controller: 'PrintCtrl'
-    .when '/annotate',
-      templateUrl: 'partials/annotate'
-      controller: 'AnnotateCtrl'
     .when '/manage',
       templateUrl: 'partials/manage'
       controller: 'ManageCtrl'
-    .when '/spells',
+    .when '/spells/:id',
       templateUrl: 'partials/spells'
       controller: 'SpellsCtrl'
+    .when '/annotate/:id',
+      templateUrl: 'partials/annotate'
+      controller: 'AnnotateCtrl'
+    .when '/print/:id',
+      templateUrl: 'partials/print'
+      controller: 'PrintCtrl'
     .when '/old',
       templateUrl: 'partials/old'
       controller: 'MainCtrl'
       resolve:
+        # TODO: This should be a service
         Spells: ($http, $q) ->
           deferred = $q.defer()
           $http.get('/api/spells').success (response) -> deferred.resolve response
