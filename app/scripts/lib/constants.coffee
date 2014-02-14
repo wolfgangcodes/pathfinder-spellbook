@@ -3,7 +3,7 @@ constants = angular.module('spellbook.constants', [])
 
 constants.constant 'Domains', []
 
-#TODO: We should maintain one list of classes client and server
+#TODO: We should maintain one list of classes client and server? Make an end point?
 constants.constant 'Classes',
   [
     'cleric'
