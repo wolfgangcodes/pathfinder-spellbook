@@ -2,8 +2,8 @@
 
 SpellBook = angular.module('spellbook.app')
 
-SpellBook.controller 'NavCtrl', ($scope, $http, $location) ->
-  # TODO: This should be in constants?
+SpellBook.controller 'NavCtrl', ($scope, $http, $route, $routeParams) ->
+  # TODO: This should be in constants? or should we get this from routes?
   $scope.pages = [
     href: 'manage'
     label: 'Manage'
@@ -21,9 +21,12 @@ SpellBook.controller 'NavCtrl', ($scope, $http, $location) ->
     label: 'Print'
     icon: 'glyphicon glyphicon-asterisk'
   ]
+
+  pagesByName = _.object _.pluck($scope.pages, 'href'), $scope.pages
   $scope.currentPage = $scope.pages[0]
-  #TODO: this should set the active page by looking at the route. Maybe a watch in Nav?
-  $scope.setCurrentPage = (page) -> $scope.currentPage = page
+
+  $scope.$on '$routeChangeSuccess', (event, current, previous) ->
+    $scope.currentPage = pagesByName[current.locals.page]
 
 
 # Clear in search

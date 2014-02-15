@@ -16,15 +16,23 @@ spellbook.config ($routeProvider, $locationProvider) ->
     .when '/manage',
       templateUrl: 'partials/manage'
       controller: 'ManageCtrl'
+      resolve:
+        page: -> 'manage'
     .when '/spells/:id',
       templateUrl: 'partials/spells'
       controller: 'SpellsCtrl'
+      resolve:
+        page: -> 'spells'
     .when '/annotate/:id',
       templateUrl: 'partials/annotate'
       controller: 'AnnotateCtrl'
+      resolve:
+        page: -> 'spells'
     .when '/print/:id',
       templateUrl: 'partials/print'
       controller: 'PrintCtrl'
+      resolve:
+        page: -> 'spells'
     .when '/old',
       templateUrl: 'partials/old'
       controller: 'MainCtrl'
