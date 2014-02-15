@@ -14,9 +14,9 @@ services.factory 'storageService', ->
 
 services.factory 'SpellbookService', (Spellbook, storageService) ->
   PREFIX = "spellbook"
+  getSpellbook: getSpellbook = (id) -> storageService.get "#{PREFIX}.#{id}"
   getAllSpellbooks: getAllSpellbooks = -> _.map _.filter( _.keys(localStorage), (key) -> key.indexOf(PREFIX) is 0), (key) -> storageService.get key
   saveSpellbook: saveSpellbook = (spellbook) -> storageService.save "#{PREFIX}.#{spellbook.id}", spellbook
-  all: getAllSpellbooks()
 
 services.factory 'Spellbook', () ->
   generateId = () -> ((Math.floor(Math.random() * Math.pow 10,16)).toString(36) for [0..4]).join('')

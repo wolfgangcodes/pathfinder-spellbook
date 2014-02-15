@@ -2,7 +2,7 @@
 
 SpellBook = angular.module('spellbook.app')
 
-SpellBook.controller 'NavCtrl', ($scope, $http, $route, $routeParams) ->
+SpellBook.controller 'NavCtrl', ($scope) ->
   # TODO: This should be in constants? or should we get this from routes?
   $scope.pages = [
     href: 'manage'
@@ -34,11 +34,3 @@ SpellBook.controller 'NavCtrl', ($scope, $http, $route, $routeParams) ->
 # Search by doamin/subschool
 # Filter by race??
 # Class badges
-
-# Localstorage for spellbooks
-#localStorage.setItem("foo", angular.toJson(foo))
-
-
-
-
-

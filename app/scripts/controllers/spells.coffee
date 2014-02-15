@@ -2,6 +2,7 @@
 
 SpellBook = angular.module('spellbook.app')
 
-SpellBook.controller 'SpellsCtrl', ($scope, $http) ->
-  console.log "SpellsCtrl"
+SpellBook.controller 'SpellsCtrl', ($scope, $route) ->
+  $scope.spellbook = $route.current.locals.spellbook
+  console.log "SpellsCtrl", $route.current.locals.spellbook
 
