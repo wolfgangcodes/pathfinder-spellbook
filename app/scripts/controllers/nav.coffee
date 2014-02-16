@@ -2,7 +2,7 @@
 
 SpellBook = angular.module('spellbook.app')
 
-SpellBook.controller 'NavCtrl', ($scope) ->
+SpellBook.controller 'NavCtrl', ($scope, $route) ->
   # TODO: This should be in constants? or should we get this from routes?
   $scope.pages = [
     href: 'manage'

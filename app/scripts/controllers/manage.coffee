@@ -2,12 +2,16 @@
 
 SpellBook = angular.module('spellbook.app')
 
-SpellBook.controller 'ManageCtrl', ($scope, $http, SpellbookService, Spellbook) ->
-  #TODO: Service that holds current Spellbook
+SpellBook.controller 'ManageCtrl', ($scope, $location, Spellbook) ->
   #TODO: Service that gets master spell list
-  $scope.spellbooks = SpellbookService.getAllSpellbooks()
-  $scope.$watchCollection _.throttle(SpellbookService.getAllSpellbooks, 1000)
-  , (val) -> $scope.spellbooks  = val
+  $scope.spellbooks = Spellbook.all()
+  $scope.$watchCollection _.throttle(Spellbook.all, 300),
+    (val) -> $scope.spellbooks = val
   $scope.addSpellbook = (name) ->
     spellbook = new Spellbook name
-    SpellbookService.saveSpellbook spellbook
+    spellbook.save()
+    $location.path("spells/#{spellbook.id}")
+  $scope.deleteSpellbook = (spellbook) ->
+    console.log spellbook
+    debugger
+    spellbook.delete()

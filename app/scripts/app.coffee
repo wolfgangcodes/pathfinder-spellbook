@@ -12,8 +12,8 @@ spellbook = angular.module 'spellbook.app', [
 ]
 
 spellbook.config ($routeProvider, $locationProvider) ->
-  resolveSpellbook = ($route, $routeParams, SpellbookService) ->
-    SpellbookService.getSpellbook $route.current.params.id
+  resolveSpellbook = ($route, $routeParams, Spellbook) ->
+    Spellbook.get $route.current.params.id
   $routeProvider
     .when '/manage',
       templateUrl: 'partials/manage'

@@ -1,9 +1,12 @@
 <div>
   <label><input type="text" ng-model="name" data-placeholder="Name your spellbook!"/></label>
-  <button ng-click="addSpellbook(name)">New Spellbook!</button>
+  <button ng-click="addSpellbook(name);name='';" ng-disabled="!name || name.length == 0">New Spellbook!</button>
 
-  <ul ng-repeat="spellbook in spellbooks">
-    <li><a href="#spells/{{spellbook.id}}">{{spellbook.name}}</a></li>
+  <ul ng-repeat="book in spellbooks">
+    <li>
+      <a href="#spells/{{book.id}}">{{book.name}}</a>
+      <a ng-click="deleteSpellbook(book)" class="text-danger glyphicon glyphicon-remove-circle"></a>
+    </li>
   </ul>
 
 </div>
