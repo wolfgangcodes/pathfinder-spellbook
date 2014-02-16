@@ -12,14 +12,18 @@ spellbook = angular.module 'spellbook.app', [
 ]
 
 spellbook.config ($routeProvider, $locationProvider) ->
-  resolveSpellbook = ($route, $routeParams, Spellbook) ->
-    Spellbook.get $route.current.params.id
+  resolveSpellbook = ($route, $location, $routeParams, Spellbook) ->
+    spellbook = Spellbook.get $route.current.params.id
+    unless spellbook
+      $location.path('/manage')
+    spellbook
   $routeProvider
-    .when '/manage',
+    .when '/manage/:id?',
       templateUrl: 'partials/manage'
       controller: 'ManageCtrl'
       resolve:
         page: -> 'manage'
+        spellbook: resolveSpellbook
     .when '/spells/:id',
       templateUrl: 'partials/spells'
       controller: 'SpellsCtrl'
@@ -30,13 +34,13 @@ spellbook.config ($routeProvider, $locationProvider) ->
       templateUrl: 'partials/annotate'
       controller: 'AnnotateCtrl'
       resolve:
-        page: -> 'spells'
+        page: -> 'annotate'
         spellbook: resolveSpellbook
     .when '/print/:id',
       templateUrl: 'partials/print'
       controller: 'PrintCtrl'
       resolve:
-        page: -> 'spells'
+        page: -> 'print'
         spellbook: resolveSpellbook
     .when '/old',
       templateUrl: 'partials/old'

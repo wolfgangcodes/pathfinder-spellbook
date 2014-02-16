@@ -24,10 +24,11 @@ SpellBook.controller 'NavCtrl', ($scope, $route) ->
 
   pagesByName = _.object _.pluck($scope.pages, 'href'), $scope.pages
   $scope.currentPage = $scope.pages[0]
+  $scope.currentSpellbook = null
 
   $scope.$on '$routeChangeSuccess', (event, current, previous) ->
     $scope.currentPage = pagesByName[current.locals.page]
-
+    $scope.currentSpellbook = current?.locals?.spellbook or previous?.locals?.spellbook
 
 # Clear in search
 # Deselect classes

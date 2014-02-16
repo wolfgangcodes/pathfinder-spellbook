@@ -32,5 +32,7 @@ services.factory 'Spellbook', (storageService) ->
     delete: () -> storageService.remove "#{PREFIX}.#{@id}"
     save: () -> storageService.save "#{PREFIX}.#{@id}", @
     @all = -> _.map storageService.getAll(PREFIX), (object) -> new Spellbook object
-    @get = (id) -> new Spellbook storageService.get "#{PREFIX}.#{id}"
+    @get = (id) ->
+      object = storageService.get "#{PREFIX}.#{id}"
+      new Spellbook object if object
   Spellbook

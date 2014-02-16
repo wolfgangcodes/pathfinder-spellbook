@@ -5,7 +5,7 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li ng-repeat="page in pages" ng-click="setCurrentPage(page)" ng-class="{active:currentPage==page}">
-        <a href="#{{page.href}}"> <span class="badge">{{$index+1}}</span> <i class="{{page.icon}}"> </i>{{page.label}}</a>
+        <a href="#{{page.href}}/{{currentSpellbook.id}}"> <span class="badge">{{$index+1}}</span> <i class="{{page.icon}}"> </i>{{page.label}}</a>
       </li>
     </ul>
   </div>
