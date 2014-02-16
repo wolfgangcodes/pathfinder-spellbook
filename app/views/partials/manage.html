@@ -1,12 +1,45 @@
 <div>
-  <label><input type="text" ng-model="name" data-placeholder="Name your spellbook!"/></label>
-  <button ng-click="addSpellbook(name);name='';" ng-disabled="!name || name.length == 0">New Spellbook!</button>
+  <!-- Make a new Spellbook -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <p class="panel-title text-center">Make a new spellbook!</p>
+    </div>
+    <form class="panel-body" role="form">
+      <p class="help-block text-center">Name your spellbook!</p>
+      <div class="form-group">
+        <input
+          class="form-control text-center"
+          type="text"
+          ng-model="name"/>
+      </div>
+      <p class="help-block text-center">Select your classes!</p>
+      <div class="form-group panel panel-default panel-body clearfix">
+        <div ng-repeat="class in classes">
+          <label class="checkbox-inline col-xs-2" style="text-transform:capitalize"><input
+            type="checkbox"
+            ng-model="selectedClasses[class]"/>{{class}}</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <button
+          class="btn btn-default btn-lg btn-block"
+          ng-click="addSpellbook(name);name='';"
+          ng-disabled="!name || name.length == 0">Create a new Spellbook!</button>
+      </div>
+    </form>
+  </div>
 
-  <ul ng-repeat="book in spellbooks">
-    <li>
-      <a href="#spells/{{book.id}}">{{book.name}}</a>
-      <a ng-click="deleteSpellbook(book)" class="text-danger glyphicon glyphicon-remove-circle"></a>
-    </li>
-  </ul>
+  <!-- Edit an existing Spellbook -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <p class="panel-title text-center">Edit a spellbook!</p>
+    </div>
+    <ul class="list-group" >
+      <li class="list-group-item" ng-repeat="book in spellbooks">
+        <a ng-click="deleteSpellbook(book)" class="pull-right text-danger glyphicon glyphicon-remove-circle" style="z-index:100"></a>
+        <a class="text-center center-block" href="#spells/{{book.id}}">{{book.name}}</a>
+      </li>
+    </ul>
 
+  </div>
 </div>

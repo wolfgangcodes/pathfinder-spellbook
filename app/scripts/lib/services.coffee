@@ -14,19 +14,20 @@ services.factory 'storageService', ->
   clearAll: () ->
     localStorage.clear()
 
-services.factory 'Spellbook', (storageService) ->
+services.factory 'Spellbook', (storageService, Classes) ->
   PREFIX = "spellbook"
   generateId = () -> ((Math.floor(Math.random() * Math.pow 10,16)).toString(36) for [0..4]).join('')
   namesGenerated = 1
   generateName = -> "New Spellbook #{namesGenerated++}"
   class Spellbook
-    constructor: (@name = generateName(), @spells = [])  ->
+    constructor: (@name = generateName(), @classes = {}, @spells = [])  ->
       #TODO: This could be garbage, tighten up!
       if _.isObject @name
         spellbook = @name
         @name = spellbook.name
         @id = spellbook.id
         @spells = spellbook.spells
+        @classes = spellbook.classes
       else
         @id = generateId()
     delete: () -> storageService.remove "#{PREFIX}.#{@id}"
