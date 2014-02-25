@@ -1,8 +1,19 @@
 <div>
+  <div>Class:
+    <span ng-repeat="class in classes"
+      ng-click="selectClass(class)"
+      class="class-badge"
+      ng-class="{'selected-class':spellbook.classes[class]}">
+      <span class="icon icon-{{class}}"></span>
+    </span>
+  </div>
+  <!-- Filter by Name -->
+  <!-- Filter by Domain -->
+  <!-- Filter by School -->
   <div
     class="spell-block-container"
     ng-repeat="spell in catalog"
-    ng-click="selectSpell(spell)">
+    ng-click="spellbook.selectSpell(spell.name)">
     <div class="panel panel-default spell-block ">
         <div class="panel-heading">
           <h6 class="small panel-title">{{spell.name}}</h6>

@@ -20,7 +20,7 @@ services.factory 'Spellbook', (storageService, Classes) ->
   namesGenerated = 1
   generateName = -> "New Spellbook #{namesGenerated++}"
   class Spellbook
-    constructor: (@name = generateName(), @classes = {}, @spells = [])  ->
+    constructor: (@name = generateName(), @classes = {}, @spells = {})  ->
       #TODO: This could be garbage, tighten up!
       if _.isObject @name
         spellbook = @name
@@ -36,6 +36,17 @@ services.factory 'Spellbook', (storageService, Classes) ->
     @get = (id) ->
       object = storageService.get "#{PREFIX}.#{id}"
       new Spellbook object if object
+    selectSpell: (spellName) ->
+      if @spells[spellName]
+        delete @spells[spellName]
+      else
+        @spells[spellName] = true
+    selectClass: (className) ->
+      if @classes[className]
+        delete @classes[className]
+      else
+        @classes[className] = true
+
   Spellbook
 
 services.factory 'Spells', ($http, $q) ->
