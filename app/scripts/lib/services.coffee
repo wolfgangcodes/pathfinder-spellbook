@@ -37,3 +37,9 @@ services.factory 'Spellbook', (storageService, Classes) ->
       object = storageService.get "#{PREFIX}.#{id}"
       new Spellbook object if object
   Spellbook
+
+services.factory 'Spells', ($http, $q) ->
+  all: ->
+    deferred = $q.defer()
+    $http.get('/api/spells').success (response) -> deferred.resolve response
+    deferred.promise

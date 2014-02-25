@@ -15,4 +15,5 @@ SpellBook.controller 'ManageCtrl', ($scope, $location, Spellbook, Classes) ->
     spellbook = new Spellbook name, $scope.selectedClasses
     spellbook.save()
     $location.path("spells/#{spellbook.id}")
+
   $scope.deleteSpellbook = (spellbook) -> spellbook.delete()

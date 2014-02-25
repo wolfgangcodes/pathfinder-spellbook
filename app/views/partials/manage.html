@@ -12,6 +12,8 @@
           type="text"
           ng-model="name"/>
       </div>
+      <!-- TODO: THis should be a directive/template? We'll need to reuse it for editing -->
+      <!-- TODO: You need at least one class -->
       <p class="help-block text-center">Select your classes!</p>
       <div class="form-group panel panel-default panel-body clearfix">
         <div ng-repeat="class in classes">
@@ -22,7 +24,7 @@
       </div>
       <div class="form-group">
         <button
-          class="btn btn-default btn-lg btn-block"
+          class="btn btn-primary btn-lg btn-block"
           ng-click="addSpellbook(name);name='';"
           ng-disabled="!name || name.length == 0">Create a new Spellbook!</button>
       </div>

@@ -2,6 +2,6 @@
 
 SpellBook = angular.module('spellbook.app')
 
-SpellBook.controller 'PrintCtrl', ($scope, $route) ->
-  $scope.spellbook = $route.current.locals.spellbook
+SpellBook.controller 'PrintCtrl', ($scope, spellbook) ->
+  $scope.spellbook = spellbook
 
