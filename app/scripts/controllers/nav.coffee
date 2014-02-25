@@ -30,6 +30,12 @@ SpellBook.controller 'NavCtrl', ($scope, $route) ->
     $scope.currentPage = pagesByName[current.locals.page]
     $scope.currentSpellbook = current?.locals?.spellbook or previous?.locals?.spellbook
 
+  # Is this a performance issue?
+  # perhaps watchCollection on keys?
+  # Just save every second?
+  $scope.$watch 'currentSpellbook', -> $scope.currentSpellbook?.save()
+  , true
+
 # Clear in search
 # Deselect classes
 # Search by doamin/subschool
