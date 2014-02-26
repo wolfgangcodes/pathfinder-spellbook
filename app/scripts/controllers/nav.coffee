@@ -33,8 +33,10 @@ SpellBook.controller 'NavCtrl', ($scope, $route) ->
   # Is this a performance issue?
   # perhaps watchCollection on keys?
   # Just save every second?
-  $scope.$watch 'currentSpellbook', -> $scope.currentSpellbook?.save()
-  , true
+  $scope.$watch 'currentSpellbook',
+    ->
+      $scope.currentSpellbook?.save()
+    , true
 
 # Clear in search
 # Deselect classes

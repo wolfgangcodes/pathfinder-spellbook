@@ -36,6 +36,11 @@ services.factory 'Spellbook', (storageService, Classes) ->
     @get = (id) ->
       object = storageService.get "#{PREFIX}.#{id}"
       new Spellbook object if object
+    selectSchool: (spellName) ->
+      if @schools[spellName]
+        delete @schools[spellName]
+      else
+        @schools[spellName] = true
     selectSpell: (spellName) ->
       if @spells[spellName]
         delete @spells[spellName]

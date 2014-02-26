@@ -29,7 +29,7 @@ spellbook.config ($routeProvider, $locationProvider) ->
       templateUrl: 'partials/spells'
       controller: 'SpellsCtrl'
       resolve:
-        spellCatalog: (Spells) -> Spells.all()
+        Spells: (Spells) -> Spells.all()
         spellbook: resolveSpellbook
         page: -> 'spells'
     .when '/annotate/:id',

@@ -1,15 +1,40 @@
 <div>
   <div>Class:
-    <span ng-repeat="class in classes"
+    <span ng-repeat="class in Classes"
       ng-click="selectClass(class)"
       class="class-badge"
       ng-class="{'selected-class':spellbook.classes[class]}">
       <span class="icon icon-{{class}}"></span>
     </span>
   </div>
+  <div>
+    <label>Spell name:
+      <input type="text" class="form-control" ng-model="spellNameFilter"/>
+    </label>
+  </div>
+  <div> Level:
+    <div>
+      <a class="btn btn-primary" ng-click="selectLevel('0')" ng-class="{active:levelFilter['0']}">0</a>
+      <a class="btn btn-primary" ng-click="selectLevel('1')" ng-class="{active:levelFilter['1']}">1</a>
+      <a class="btn btn-primary" ng-click="selectLevel('2')" ng-class="{active:levelFilter['2']}">2</a>
+      <a class="btn btn-primary" ng-click="selectLevel('3')" ng-class="{active:levelFilter['3']}">3</a>
+      <a class="btn btn-primary" ng-click="selectLevel('4')" ng-class="{active:levelFilter['4']}">4</a>
+      <a class="btn btn-primary" ng-click="selectLevel('5')" ng-class="{active:levelFilter['5']}">5</a>
+      <a class="btn btn-primary" ng-click="selectLevel('6')" ng-class="{active:levelFilter['6']}">6</a>
+      <a class="btn btn-primary" ng-click="selectLevel('7')" ng-class="{active:levelFilter['7']}">7</a>
+      <a class="btn btn-primary" ng-click="selectLevel('8')" ng-class="{active:levelFilter['8']}">8</a>
+      <a class="btn btn-primary" ng-click="selectLevel('9')" ng-class="{active:levelFilter['9']}">9</a>
+      <!-- <a class="btn btn-primary" ng-click="selectAllLevels()" >{{allOrNone ? 'All' : 'Clear'}}</a> -->
+    </div>
+  </div>
+  <div> Domain:
+  </div>
+  <div> School:
+  </div>
   <!-- Filter by Name -->
   <!-- Filter by Domain -->
   <!-- Filter by School -->
+  <!-- Filter by Level -->
   <div
     class="spell-block-container"
     ng-repeat="spell in catalog"

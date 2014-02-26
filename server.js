@@ -39,6 +39,7 @@ var api = require('./lib/controllers/api'),
 
 // Server Routes
 app.get('/api/spells', api.spells);
+app.get('/api/zorch', api.zorch);
 
 // Angular Routes
 app.get('/partials/*', controllers.partials);
